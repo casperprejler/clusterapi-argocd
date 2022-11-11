@@ -2,6 +2,6 @@ cluster:
   name: c1
   masterNodes: 3
   workerNodes: 3
-  version: v1.24.1
+  version: v1.22.1
 
   
