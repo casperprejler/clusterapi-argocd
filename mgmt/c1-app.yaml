@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: c1-cluster
+spec:
+  destination:
+    name: ''
+    namespace: 'default'
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: mgmt
+    repoURL: 'https://github.com/casperprejler/clusterapi-argocd.git' #Indicate which source repo for fetching the cluster configuration
+    targetRevision: HEAD
+    helm:
+      valueFiles:
+        - values-c1.yaml
+  project: default #You can give a project name here
+  syncPolicy:
+    automated:
+      prune: true
+      allowEmpty: true
